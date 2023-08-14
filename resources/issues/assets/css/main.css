@@ -8,16 +8,50 @@
   background: rgba(136, 135, 135, 0.5);
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  /* border-radius: 5px; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #555;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
 html {
   font-size: 18px;
 }
 
 body {
   font-family: "Times New Roman", Times, serif;
-  overflow-x: hidden;
-  background: url(../../../lower_background_LP.jpg) repeat;
-  background-size: cover;
-  background-attachment: fixed;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-family: "Times New Roman", Times, serif;
+}
+body .navbar {
+  position: fixed;
+  width: 100vw;
 }
 
 .loader-container {
@@ -30,7 +64,7 @@ body {
   z-index: 1000;
 }
 .loader-container .spinner-border {
-  border-color: #843fc4;
+  border-color: #ee6d6d;
   border-right-color: transparent;
 }
 
@@ -43,6 +77,8 @@ body {
 }
 .hero .container-xxl {
   height: 100%;
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
 }
 .hero .container-xxl .hero-content {
   height: 100%;
@@ -59,7 +95,7 @@ body {
 }
 .hero .container-xxl .hero-content p.text-bg {
   font-size: 10rem;
-  color: rgba(238, 238, 238, 0.15);
+  color: rgba(238, 238, 238, 0.8);
   position: absolute;
   z-index: -1;
   margin-bottom: 14rem;
@@ -72,20 +108,14 @@ body {
 }
 .hero .container-xxl .hero-content p.display-1 {
   margin-top: 4.75rem;
-  color: whitesmoke;
-}
-.hero .container-xxl .hero-content p:not(.display-1):not(.text-bg) {
-  color: rgba(245, 245, 245, 0.8);
 }
 .hero .container-xxl .hero-content button {
-  background-color: #7737b3;
+  background-color: #eb5656;
   color: #fff;
   margin-top: 2rem;
-  border: none;
 }
 .hero .container-xxl .hero-content button:hover {
-  background-color: #5d2b8c;
-  border: none;
+  background-color: #e62828;
 }
 .hero .container-xxl .hero-bg {
   height: 100%;
@@ -97,11 +127,11 @@ body {
 .hero .container-xxl .hero-bg img {
   height: 75%;
   transform: rotate3d(0, -1, 0, 30deg);
-  box-shadow: 3px 3px 5px rgb(31, 0, 62);
+  box-shadow: 3px 3px 5px grey;
   transition: 0.2s;
 }
 .hero .container-xxl .hero-bg img:hover {
-  box-shadow: 7px 7px 7px rgb(31, 0, 62);
+  box-shadow: 7px 7px 7px grey;
   transform: rotate3d(0, -1, 0, 15deg);
 }
 @media (max-width: 992px) {
@@ -116,7 +146,7 @@ body {
   left: 0;
   height: 100vh;
   width: 25px;
-  background-color: #502578;
+  background-color: #eee;
   border: none;
   transition: 0.2s;
 }
@@ -133,8 +163,7 @@ body {
 
 .offcanvas {
   --bs-offcanvas-width: 40vw;
-  background-color: #1c0d2a;
-  color: whitesmoke;
+  padding-top: 4rem;
 }
 .offcanvas .offcanvas-body {
   padding-right: 1.75rem;
@@ -143,7 +172,7 @@ body {
   list-style: none;
 }
 .offcanvas .offcanvas-body ul div {
-  border-bottom: solid rgba(80, 0, 161, 0.5) 2px;
+  border-bottom: solid #dee2e6 2px;
   margin-bottom: 1rem;
 }
 .offcanvas .offcanvas-body ul p.offcanvas-section-title {
@@ -167,17 +196,17 @@ body {
   width: 100%;
   text-align: left;
   transition: 0.2s;
-  color: whitesmoke;
+  color: #444;
 }
 .offcanvas .offcanvas-body ul li a.custom-active button {
-  background-color: rgba(132, 63, 196, 0.75);
+  background-color: rgba(238, 109, 109, 0.75);
   color: white;
   margin-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 .offcanvas .offcanvas-body ul li:hover a button {
-  color: rgba(245, 245, 245, 0.75);
+  color: black;
 }
 
 @media (max-width: 992px) {
@@ -211,6 +240,11 @@ section h2.section-title {
   margin-right: auto;
   margin-bottom: 2rem;
 }
+@media (max-width: 992px) {
+  section h2.section-title {
+    margin-bottom: 3rem;
+  }
+}
 section h2.section-title::after {
   content: "";
   position: absolute;
@@ -219,7 +253,7 @@ section h2.section-title::after {
   transform: translateX(-50%);
   width: 150px;
   height: 2px;
-  background-color: #843fc4;
+  background-color: #ee6d6d;
   border-radius: 5px;
   transition: 0.15s;
 }
@@ -233,24 +267,32 @@ section h2.section-title .copy-section-link {
   top: 50%;
   left: -60px;
   transform: translateY(-50%);
-  fill: #843fc4;
+  fill: #ee6d6d;
   cursor: pointer;
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
+}
+@media (max-width: 992px) {
+  section h2.section-title .copy-section-link {
+    bottom: -40px;
+    top: unset !important;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
 }
 section h2.section-title:hover .copy-section-link {
   opacity: 1;
   visibility: visible;
 }
 section .border-box {
-  background-color: #0c0314;
-  color: rgb(245, 245, 245);
   width: 85%;
   margin-left: auto;
   margin-right: auto;
   padding: 5rem;
-  border: rgba(80, 0, 161, 0.5) 2px solid;
+  border: #dee2e6 2px solid;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 992px) {
@@ -269,28 +311,32 @@ section .border-box {
     padding-bottom: 3rem;
   }
 }
-section .border-box .section-author {
-  color: rgba(245, 245, 245, 0.75) !important;
-}
 section .content {
   position: relative;
+  text-align: justify;
+}
+@media (max-width: 767.98px) {
+  section .content {
+    font-size: 0.95rem;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
 }
 section .content span {
   display: block;
   text-indent: 3ch;
   margin-bottom: 1rem;
-  text-align: justify;
 }
 section .content li {
   text-align: justify;
 }
 section .content a {
   text-decoration: none;
-  color: #843fc4;
-  transition: 0.2s;
+  color: #ee6d6d;
 }
 section .content a:hover {
-  color: #b68ddc;
+  color: #db1a1a;
 }
 section .content p.content-abstract {
   padding-top: 1rem;
@@ -302,7 +348,7 @@ section .content p.content-abstract {
 }
 @media (max-width: 767.98px) {
   section .content p.content-abstract {
-    width: 85%;
+    width: 95%;
   }
 }
 section .content p.content-abstract span {
@@ -352,22 +398,23 @@ section .content .subsection .floating-figure figure {
   }
 }
 section .content .subsection figure {
-  width: clamp(22vw, 300px, 30vw);
+  width: clamp(25vw, 300px, 30vw);
 }
 section .content .subsection figure img {
-  border: rgba(80, 0, 161, 0.5) 1px solid;
+  width: 100%;
+  border: #dee2e6 1px solid;
   border-radius: 5px;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 section .content .subsection figure figcaption {
   text-align: center;
   color: rgba(33, 37, 41, 0.75);
   font-style: italic;
   font-size: 0.9rem;
-  color: rgba(245, 245, 245, 0.8);
+}
+@media (max-width: 767.98px) {
+  section .content .subsection figure figcaption {
+    font-size: 0.8rem;
+  }
 }
 section .content .subsection figure.figure-block {
   width: 75%;
@@ -390,8 +437,8 @@ section .content .references::before {
   width: 30%;
   height: 2px;
   border-radius: 5px;
-  background-color: #843fc4;
-  box-shadow: 0 6px 0 #843fc4;
+  background-color: #ee6d6d;
+  box-shadow: 0 6px 0 #ee6d6d;
 }
 section .content .references p {
   padding: 0.5rem;
@@ -400,6 +447,12 @@ section .content .references p {
   word-wrap: break-word;
   font-size: 0.88rem;
   margin-bottom: 0.5rem;
+}
+@media (max-width: 767.98px) {
+  section .content .references p {
+    font-size: 0.8rem;
+    margin-bottom: 0rem;
+  }
 }
 
 .reference-highlight {
@@ -416,13 +469,13 @@ section .content .references p {
     background-color: transparent;
   }
   25% {
-    background-color: rgba(132, 63, 196, 0.5);
+    background-color: rgba(238, 109, 109, 0.5);
   }
   50% {
     background-color: transparent;
   }
   75% {
-    background-color: rgba(132, 63, 196, 0.5);
+    background-color: rgba(238, 109, 109, 0.5);
   }
   100% {
     background-color: transparent;
@@ -434,20 +487,20 @@ section .content .references p {
     background-color: transparent;
   }
   25% {
-    background-color: rgba(132, 63, 196, 0.5);
+    background-color: rgba(238, 109, 109, 0.5);
   }
   50% {
     background-color: transparent;
   }
   75% {
-    background-color: rgba(132, 63, 196, 0.5);
+    background-color: rgba(238, 109, 109, 0.5);
   }
   100% {
     background-color: transparent;
   }
 }
 .tooltip {
-  --bs-tooltip-bg: #8b42ce;
+  --bs-tooltip-bg: #ee6e6e;
   --bs-tooltip-opacity: 1;
   --bs-tooltip-color: white;
   --bs-tooltip-max-width: 400px;
@@ -462,11 +515,7 @@ section .content .references p {
 }
 .tooltip a {
   text-decoration: none;
-  color: wheat;
-  transition: 0.2s;
-}
-.tooltip a:hover {
-  color: #e9b759;
+  color: #444;
 }
 @media (max-width: 992px) {
   .tooltip a {
@@ -476,6 +525,6 @@ section .content .references p {
 }
 
 .toast {
-  --bs-toast-bg: rgba(163, 109, 238, 0.75);
+  --bs-toast-bg: rgba(238, 109, 109, 0.75);
   --bs-toast-color: #fff;
 }/*# sourceMappingURL=main.css.map */
