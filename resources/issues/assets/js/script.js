@@ -1,12 +1,12 @@
 $(function () {
-  // $(window).on("load", function () {
-  // $(".loader-container").fadeOut(
-  // (callback = function () {
-  $(".loaded-content").fadeIn("fast");
-  $("body").css("overflow-x", "auto");
-  // })
-  // );
-  // });
+  $(window).on("load", function () {
+    $(".loader-container").fadeOut(
+      (callback = function () {
+        $(".loaded-content").fadeIn("fast");
+        $("body").css("overflow-x", "auto");
+      })
+    );
+  });
 
   // ===================================================================
 
@@ -64,7 +64,7 @@ $(function () {
 
   // ===================================================================
 
-  fetch(`./data/issue${$("body").attr("issue-no")}_references.json`)
+  fetch(`./../../resources/issues/data/issue${$("body").attr("issue-no")}_references.json`)
     .then((response) => {
       return response.json();
     })
@@ -119,13 +119,14 @@ $(function () {
   $(".copy-section-link").on("click", function () {
     sectionHref = $(this).attr("section-href");
     sectionHref = sectionHref.split(".");
-    navigator.clipboard.writeText(`www.ys-journal.org/issues/issue_${sectionHref[0]}.html?article=${parseInt(sectionHref[1]) - 1}`);
+    navigator.clipboard.writeText(`www.iyna-oct.org/issues/${sectionHref[0]}/?article=${parseInt(sectionHref[1]) - 1}`);
 
     const toast = new bootstrap.Toast(document.getElementById("copied-toast"));
     toast.show();
   });
 
   // ===================================================================
+
 });
 
 const { createApp } = Vue;
@@ -141,14 +142,6 @@ createApp({
   },
   mounted() {
     $(`#offcanvas-nav-list a[href="#${this.currentSection}"]`).addClass("custom-active");
-    // SPECIAL CASE
-    if ($("body").attr("issue-no") == "8" && !urlParams.has("article")) {
-      if ($("body").attr("special-version") == "8.1") {
-        this.currentSection = "section-2";
-      } else {
-        this.currentSection = "section-3";
-      }
-    }
   },
   updated() {
     let noofSections = $("#offcanvas-nav-list").attr("no-of-sections");
